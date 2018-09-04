@@ -9,8 +9,8 @@ export class SelectComite extends Creator{
         const db=ndget.show();
         return(
             `
-                <m-select col="s8">
-                <option disabled selected>Comite</option>
+                <m-select col="s8" >
+                    <option disabled selected >${this.getProps('content')}</option>
                     ${
                         db.map((f)=>{
                         return `<option value=${f.id_comite}>${f.comite}</option>`
@@ -26,7 +26,12 @@ export class SelectComite extends Creator{
 
         const edit=this.querySelector('[disabled]');
 
-        edit.innerHTML=this.getProps('content');
+        const content=this.getProps('content');
+
+        if(content ===null || content ==='undefined'){
+            edit.innerHTML='Escolha um Comitê';
+        }
+       // edit.innerHTML=this.getProps('content');
         
         if(edit !==null){
             this.value=this.getProps('edit');

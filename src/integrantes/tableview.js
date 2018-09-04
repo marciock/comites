@@ -6,7 +6,7 @@ export class TbIntegrantes extends Creator{
 
     render(){
        
-        const db=new NdGet(HOST+'ggnomotor/modules/usuarios/services/Lista.php');
+        const db=new NdGet(HOST+'ggnomotor/modules/usuarios/services/ListaIntegrantes.php');
         const show=db.show();
         
 
@@ -19,7 +19,7 @@ export class TbIntegrantes extends Creator{
                             <th > Integrante</th>
                             <th > Chave</th>
                             
-                            <th >email</th>
+                            <th >Comitê</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@ export class TbIntegrantes extends Creator{
                                   <td><p><label><input  type="radio"   value="${f.id_usuarios}" name="id_usuarios" /><span></span></label></p></td>
                                   <td>${f.nome}</td>
                                   <td>${f.chave}</td>
-                                  <td>${f.email}</td>
+                                  <td>${f.comite}</td>
                                 </tr>
                               `)
                       }).join('')

@@ -16,12 +16,12 @@ export class AddReunioes extends Creator{
         return(
             `
             <div>
-            <m-header h="3">Cadastro de Reuniões</m-header>
+            <m-header h="3">Cadastro de Reuniões e Eventos</m-header>
             <m-row>
                 <m-input col="s8" id="assunto">Assunto</m-input>
             </m-row>
             <m-row>
-                <select-comite id="comite"></select-comite>
+                <select-comite id="comite" content="Escolha um Comite"></select-comite>
                 
             </m-row>
             <m-row>

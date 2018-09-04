@@ -69,6 +69,10 @@ export class EditComites extends Creator{
             {
                 id:'comite',
                 name:'comite'
+            },
+            {
+                id:'objetivos',
+                name:'objetivos'
             }
             
         ]
@@ -88,6 +92,9 @@ export class EditComites extends Creator{
             const ndpost=new NdPost(HOST+'ggnomotor/modules/comites/services/Update.php',mydata);
            ndpost.show();
 
+           alert('Salvo com sucesso');
+            
+           
            const path=new PathName('#/comites','cm-comites');
                
           /*  alert('Salvo com sucesso');

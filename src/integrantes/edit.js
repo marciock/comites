@@ -17,10 +17,10 @@ export class EditIntegrantes extends Creator{
     render(){
 
         const id=this.state.envia();
-       const endereco=`${HOST}ggnomotor/modules/usuarios/services/Search.php?id=${id}`;
+       const endereco=`${HOST}ggnomotor/modules/usuarios/services/SearchIntegrantes.php?id=${id}`;
           const ndGet=new NdGet(endereco);
           const data=ndGet.show();
-        console.log(id);
+       // console.log(id);
 
         return(
             `
@@ -30,6 +30,7 @@ export class EditIntegrantes extends Creator{
             </m-row>
             ${
                 data.map((f)=>{
+                    
                     return (
                         `
                         <m-row>
@@ -39,7 +40,7 @@ export class EditIntegrantes extends Creator{
                             <m-input col="s8" id="nome" edit="${f.nome}">Nome</m-input>
                         </m-row>
                         <m-row>
-                            <select-comite edit="${f.id_comite}"></select-comite>
+                            <select-comite edit="${f.id_comite}" content="${f.comite}"></select-comite>
                         </m-row>
                         <m-row>
                          <m-input col="s8" id="email" type="email"  edit="${f.email}">Email</m-input>
@@ -63,7 +64,10 @@ export class EditIntegrantes extends Creator{
     callBack(){
         const save=this.querySelector('#save');
         
-
+        const labels=document.querySelectorAll('label');
+        labels.forEach((f)=>{
+            f.classList.add('active');
+        })
        
 
         const db=[
@@ -86,26 +90,14 @@ export class EditIntegrantes extends Creator{
             {
                 id:'descricao',
                 name:'descricao'
-            },
-            {
-                id:'representante',
-                name:'representante'
             }
+            
         ]
 
 
 
         save.addEventListener('click',()=>{
            
-            check.forEach((f)=>{
-                checkArray.push(f.value);
-    
-            });
-           
-                console.log(checkArray[1]);
-    
-            
-
 
             const data=new NdFormData();
 

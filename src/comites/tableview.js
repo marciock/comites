@@ -16,6 +16,7 @@ export class TbComites extends Creator{
                             <th>Selecione</th>
                             
                             <th>Comitê</th>
+                            <th>objetivos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,7 @@ export class TbComites extends Creator{
                                 `<tr>
                                     <td><p><label><input  type="radio"   value="${f.id_comite}" name="id_comite"/><span></span></label></p></td>
                                     <td>${f.comite}</td>
+                                    <td>${f.objetivos}</td>
                                    
                                 </tr>
                                 `

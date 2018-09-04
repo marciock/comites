@@ -32,7 +32,7 @@ export class AddIntegrantes extends Creator{
               <m-input col="s8" id="nome">Nome</m-input>
              </m-row>
             <m-row>
-                <select-comite></select-comite>
+                <select-comite content="Escolha um Comite" id="comite"></select-comite>
             </m-row>
              
              <m-row>
@@ -53,7 +53,7 @@ export class AddIntegrantes extends Creator{
     }
     callBack(){
         const save=this.querySelector('#save');
-        const check=this.querySelectorAll('input[type=checkbox');
+        const check=this.querySelectorAll('input[type=checkbox]');
 
         let checkArray=new Array();
 
@@ -64,10 +64,7 @@ export class AddIntegrantes extends Creator{
 
         save.addEventListener('click',()=>{
            
-            check.forEach((f)=>{
-                checkArray.push(f.value);
-    
-            });
+            console.log(check.values);
            
                 console.log(checkArray[1]);
     
@@ -81,8 +78,8 @@ export class AddIntegrantes extends Creator{
                     name:'nome'
                 },
                 {
-                    id:'senha',
-                    name:'senha'
+                    id:'comite',
+                    name:'comite'
                 },
                 {
                     id:'email',
@@ -91,11 +88,8 @@ export class AddIntegrantes extends Creator{
                 {
                     id:'descricao',
                     name:'descricao'
-                },
-                {
-                    id:'representante',
-                    name:'representante'
                 }
+                
             ]
 
 
@@ -107,7 +101,7 @@ export class AddIntegrantes extends Creator{
 
            
           
-            const ndpost=new NdPost(HOST+'ggnomotor/modules/usuarios/services/Insert.php',mydata);
+            const ndpost=new NdPost(HOST+'ggnomotor/modules/usuarios/services/InsertIntegrante.php',mydata);
             ndpost.show();
 
           

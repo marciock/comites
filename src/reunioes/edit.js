@@ -21,13 +21,13 @@ export class EditReunioes extends Creator{
         return(
             `
             <div>
-            <m-header h="3">Editar Reuniões dos Comitês</m-header>
+            <m-header h="3">Editar Reuniões e Eventos</m-header>
             ${
                 data.map((f)=>{
                     return (
                         `
                         <m-row>
-                        <m-input col="s8" id="assunto" edit="${f.assunto}">Assunto</m-input>
+                        <m-input col="s8" id="assunto" edit="${f.assunto}" >Assunto</m-input>
                     </m-row>
                     <m-row>
                         <select-comite id="comite" edit="${f.id_comite}" content="${f.comite}"></select-comite>
