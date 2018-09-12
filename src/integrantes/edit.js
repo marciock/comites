@@ -30,27 +30,20 @@ export class EditIntegrantes extends Creator{
             </m-row>
             ${
                 data.map((f)=>{
-                    
+                    this.setState('myid',()=>{
+                        return f.id_integrantes
+                    })
                     return (
                         `
                         <m-row>
-                            <m-input col="s8" id="chave" edit="${f.chave}">Chave</m-input>
+                        <select-usuarios  id="usuarios" content="${f.nome}" edit="${f.id_usuarios}"></select-usuarios>
                         </m-row>
+                       
                         <m-row>
-                            <m-input col="s8" id="nome" edit="${f.nome}">Nome</m-input>
+                            <select-comite content="${f.comite}" id="comite" edit="${f.id_comite}"></select-comite>
                         </m-row>
-                        <m-row>
-                            <select-comite edit="${f.id_comite}" content="${f.comite}"></select-comite>
-                        </m-row>
-                        <m-row>
-                         <m-input col="s8" id="email" type="email"  edit="${f.email}">Email</m-input>
-                        </m-row>
-                        <m-row>
-                         <m-area col="s8" id="descricao"  edit="${f.descricao}"  label="Descrição"></m-area>
-                        </m-row>
-                        <m-row>
-                         <m-checkbox col="s8" id="representante"> Representante</m-ceckbox>
-                       </m-row>
+                         
+                       
 
                     `)
                 })
@@ -64,6 +57,7 @@ export class EditIntegrantes extends Creator{
     callBack(){
         const save=this.querySelector('#save');
         
+        const id=this.state.envia();
         const labels=document.querySelectorAll('label');
         labels.forEach((f)=>{
             f.classList.add('active');
@@ -72,25 +66,13 @@ export class EditIntegrantes extends Creator{
 
         const db=[
             {
-                id:'chave',
-                name:'chave'
+                id:'usuarios',
+                name:'usuarios'
             },
             {
-                id:'nome',
-                name:'nome'
-            },
-            {
-                id:'senha',
-                name:'senha'
-            },
-            {
-                id:'email',
-                name:'email'
-            },
-            {
-                id:'descricao',
-                name:'descricao'
-            }
+                id:'comite',
+                name:'comite'
+            }            
             
         ]
 
@@ -104,9 +86,10 @@ export class EditIntegrantes extends Creator{
 
             const mydata=data.push(db);
 
-           
+            const myid=this.state.myid();
+           mydata.append('id',myid);
           
-            const ndpost=new NdPost('http://localhost/ggnomotor/modules/usuarios/services/Update.php',mydata);
+            const ndpost=new NdPost(HOST+'ggnomotor/modules/usuarios/services/UpdateIntegrantes.php',mydata);
             ndpost.show();
             alert('Salvo com sucesso');
 

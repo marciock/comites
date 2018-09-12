@@ -22,6 +22,12 @@ export class ComitesHome extends Creator{
                 component:'cm-integrantes',
                 src:'./icons/integrantes.svg',
                 title:'Integrantes'
+            },
+            {
+                url:'#/projetos',
+                component:'cm-projetos',
+                src:'./icons/projetos.svg',
+                title:'Projetos e Processos'
             }
 
         ]

@@ -20,6 +20,9 @@ export class AddComites extends Creator{
             <m-row>
              <m-area col="s8" label="Objetivos" id="objetivos"></m-area>
             </m-row>
+            <m-row>
+             <select-usuarios  id="representante" content="Representante"></select-usuarios>
+            </m-row>
             <fab-form url-cancel="#/comites" component="cm-comites"></fab-form>
             </div>
 
@@ -38,6 +41,10 @@ export class AddComites extends Creator{
                 id:'objetivos',
                 name:'objetivos'
             },
+            {
+                id:'representante',
+                name:'representante'
+            }
             
         ]
         
@@ -47,6 +54,8 @@ export class AddComites extends Creator{
             const data=new NdFormData();
             const mydata=data.push(db);
             
+            console.log(mydata.get('representante'));
+
             const ndpost=new NdPost(HOST+'ggnomotor/modules/comites/services/Insert.php',mydata);
             ndpost.show();
 

@@ -28,8 +28,11 @@ export class SelectComite extends Creator{
 
         const content=this.getProps('content');
 
-        if(content ===null || content ==='undefined'){
-            edit.innerHTML='Escolha um Comitê';
+
+        if(content !==null){
+            edit.innerHTML=content;
+        }else{
+            edit.innerHTML="Escolha um Comitê";
         }
        // edit.innerHTML=this.getProps('content');
         

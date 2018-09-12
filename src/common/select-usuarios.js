@@ -2,15 +2,15 @@ import {Creator} from '../../dist/nerdcreator';
 import {NdGet} from '../../dist/nerdhttp';
 import {MSelect} from '../../components/m-forms';
 
-export class SelecUsuarios extends Creator{
+export class SelectUsuarios extends Creator{
 
     render(){
-        const ndget=new NdGet('http://localhost/ggnomotor/modules/usuarios/services/Lista.php');
+        const ndget=new NdGet(HOST+'/ggnomotor/modules/usuarios/services/Lista.php');
         const db=ndget.show();
         return(
             `
                 <m-select col="s8">
-                <option disabled selected>Usuários</option>
+                <option disabled selected>${this.getProps('content')}</option>
                     ${
                         db.map((f)=>{
                         return `<option value=${f.id_usuarios}>${f.nome}</option>`
@@ -27,6 +27,14 @@ export class SelecUsuarios extends Creator{
         const edit=this.querySelector('[disabled]');
 
         edit.innerHTML=this.getProps('content');
+
+        const content=this.getProps('content');
+
+        if(content !==null){
+            edit.innerHTML=content;
+        }else{
+            edit.innerHTML='Escolha um Representante';
+        }
         
         if(edit !==null){
             this.value=this.getProps('edit');
@@ -42,4 +50,4 @@ export class SelecUsuarios extends Creator{
         })
     }
 }
-customElements.define('select-usuarios',SelecUsuarios);
+customElements.define('select-usuarios',SelectUsuarios);

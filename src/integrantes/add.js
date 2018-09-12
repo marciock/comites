@@ -11,6 +11,7 @@ import FabForm from '../common/fab-form';
 import CheckIcons from '../common/check-icons';
 
 import SelectComite from '../common/select-comite';
+import SelectUsuarios from '../common/select-usuarios';
 
 import {PathName} from '../common/pathname';
 
@@ -23,27 +24,18 @@ export class AddIntegrantes extends Creator{
             `
             <div>
             <m-row>
-                <m-header h="3">Adicionar Integrantes</m-header>
+                <m-header h="4">Adicionar Integrantes aos Comitês</m-header>
             </m-row>
             <m-row>
-                <m-input col="s8" id="chave">Chave</m-input>
+            <select-usuarios  id="usuarios" content="Escolha um Integrante"></select-usuarios>
             </m-row>
-            <m-row>
-              <m-input col="s8" id="nome">Nome</m-input>
-             </m-row>
+           
             <m-row>
                 <select-comite content="Escolha um Comite" id="comite"></select-comite>
             </m-row>
              
-             <m-row>
-             <m-input col="s8" id="email" type="email"  >Email</m-input>
-            </m-row>
-            <m-row>
-             <m-area col="s8" id="descricao"  label="Descrição" ></m-area>
-            </m-row>
-            <m-row>
-             <m-checkbox col="s8" id="representante"> Representante</m-ceckbox>
-            </m-row>
+            
+           
 
            
             <fab-form url-cancel="#/integrantes" component="cm-integrantes"></fab-form>
@@ -53,43 +45,24 @@ export class AddIntegrantes extends Creator{
     }
     callBack(){
         const save=this.querySelector('#save');
-        const check=this.querySelectorAll('input[type=checkbox]');
-
-        let checkArray=new Array();
-
        
-
-      
 
 
         save.addEventListener('click',()=>{
            
-            console.log(check.values);
+            
            
-                console.log(checkArray[1]);
-    
+              
             const db=[
                 {
-                    id:'chave',
-                    name:'chave'
-                },
-                {
-                    id:'nome',
-                    name:'nome'
+                    id:'usuarios',
+                    name:'usuarios'
                 },
                 {
                     id:'comite',
                     name:'comite'
-                },
-                {
-                    id:'email',
-                    name:'email'
-                },
-                {
-                    id:'descricao',
-                    name:'descricao'
                 }
-                
+                             
             ]
 
 

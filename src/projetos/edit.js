@@ -9,11 +9,11 @@ import {MHeader} from '../../components/m-header';
 import {PathName} from '../common/pathname';
 
 
-export class EditComites extends Creator{
+export class EditProjetos extends Creator{
 
     render(){
        const id=this.state.envia();
-       const endereco=`${HOST}ggnomotor/modules/comites/services/Search.php?id=${id}`;
+       const endereco=`${HOST}ggnomotor/modules/comites/services/ProjetosSearch.php?id=${id}`;
           const ndGet=new NdGet(endereco);
           const data=ndGet.show();
 
@@ -24,18 +24,25 @@ export class EditComites extends Creator{
             <m-header h="3">Editar Comitês</m-header>
             ${
                 data.map((f)=>{
+                   
                     return (
                             `
 
-                        <m-row>
-                         <m-input col="s8" id="comite" edit="${f.comite}" edit="${f.id_comite}">Comitê</m-input>
-                        </m-row>
-                        <m-row>
-                          <m-area col="s8" label="Objetivos" id="objetivos"edit="${f.objetivos}" ></m-area>
-                        </m-row>
-                        <m-row>
-                          <select-usuarios  id="representante" content="${f.nome}" edit="${f.representante}"></select-usuarios>
-                        </m-row>
+                            <m-row>
+                            <select-comite content="${f.comite}" id="comite" edit="${f.id_comite}"></select-comite>
+                           </m-row>
+                           <m-row>
+                             <m-input col="s8" id="projeto" edit="${f.projeto}">Projeto</m-input>
+                           </m-row>
+                           <m-row>
+                           <m-area col="s8" label="Descrição" id="descricao" edit="${f.descricao}"></m-area>
+                          </m-row>
+                           <m-row>
+                            <m-area col="s8" label="Resultados Esperados" id="esperados" edit="${f.esperados}"></m-area>
+                           </m-row>
+                           <m-row>
+                            <m-area col="s8" label="Resultados Obtidos" id="obtidos" edit="${f.obtidos}"></m-area>
+                           </m-row>
 
                     `)
                 })
@@ -44,7 +51,7 @@ export class EditComites extends Creator{
             
             
             
-            <fab-form url-cancel="#/comites" component="cm-comites"></fab-form>
+            <fab-form url-cancel="#/projetos" component="cm-projetos"></fab-form>
             </div>
 
             `
@@ -69,16 +76,23 @@ export class EditComites extends Creator{
             {
                 id:'comite',
                 name:'comite'
+            }, 
+            {
+                id:'projeto',
+                name:'projeto'
             },
             {
-                id:'objetivos',
-                name:'objetivos'
+                id:'descricao',
+                name:'descricao'
             },
             {
-                id:'representante',
-                name:'representante'
+                id:'esperados',
+                name:'esperados'
+            },
+            {
+                id:'obtidos',
+                name:'obtidos'
             }
-            
         ]
 
        
@@ -93,13 +107,13 @@ export class EditComites extends Creator{
 
             
           
-            const ndpost=new NdPost(HOST+'ggnomotor/modules/comites/services/Update.php',mydata);
+            const ndpost=new NdPost(HOST+'ggnomotor/modules/comites/services/ProjetosUpdate.php',mydata);
            ndpost.show();
 
            alert('Salvo com sucesso');
             
            
-           const path=new PathName('#/comites','cm-comites');
+           const path=new PathName('#/projetos','cm-projetos');
                
           /*  alert('Salvo com sucesso');
             const host=window.location.pathname;
@@ -115,4 +129,4 @@ export class EditComites extends Creator{
     }
 
 }
-customElements.define('edit-comites',EditComites);
+customElements.define('edit-projetos',EditProjetos);
